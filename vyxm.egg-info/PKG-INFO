@@ -1,0 +1,54 @@
+Metadata-Version: 2.4
+Name: vyxm
+Version: 0.0.1
+Summary: A modular AI framework with agent protocols, memory, cv and llm based machine learning algorithims.
+Home-page: https://github.com/vyomie/vyxm
+Author: Vyomie
+Author-email: me@vyxm.in
+Project-URL: Source, https://github.com/vyomie/vyxm
+Project-URL: Tracker, https://github.com/vyomie/vyxm/issues
+Keywords: vyxm agents ai protocol transformers multi-agent ml learning memory computer-vision llm neural networks
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: torch>=2.0.0
+Requires-Dist: transformers>=4.36.0
+Requires-Dist: diffusers
+Requires-Dist: pydantic>=2
+Requires-Dist: numpy
+Requires-Dist: typing-extensions
+Requires-Dist: uuid
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license-file
+Dynamic: project-url
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Vyxm Protocol
+
+**Modular multi-agent protocol system with planner, distributor, and executor support.**
+
+```python
+from vyxm.protocol import Protocall
+
+engine = Protocall()
+engine.register_model("code_bot", "gpt2", "transformers", tag="Code")
+
+response = engine.run("Write a Python class for a linked list")
+print(response.output_text)
+```

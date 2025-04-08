@@ -1,0 +1,8 @@
+requests
+torch>=2.0.0
+transformers>=4.36.0
+diffusers
+pydantic>=2
+numpy
+typing-extensions
+uuid
