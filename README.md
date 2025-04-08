@@ -52,20 +52,6 @@ print(distributor.run("Generate Python code that reverses a string"))
 print(distributor.run("Create an image of a serene beach at sunset with floating lanterns"))
 ```
 
----
-
-## 🖨️ Example Output
-
-```text
-# Python Code
-def hello():
-    print('Prompt was: Generate Python code that reverses a string')
-
-[Image: 'Create an image of a serene beach at sunset with floating lanterns']
-```
-
----
-
 ## 📂 Protocol Module Overview
 
 `vyxm.protocol` provides the foundational components that power `vyxm`:
