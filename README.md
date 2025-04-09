@@ -1,5 +1,5 @@
-cat <<EOF > README.md
-![VYXM Logo](logo.png)
+
+<img src="logo.png" alt="VYXM Logo" style="width:1000px; border-radius:100px;">
 
 **VYXM** is an extensible AI tool designed for intelligent orchestration of tasks such as natural language processing, code generation, and image synthesis. Built around modularity, it allows users to plug in and route between different AI capabilities using a clean, protocol-driven interface.
 
@@ -79,5 +79,3 @@ Just register your tool and let the system handle the routing.
 ## 📚 License
 
 MIT © 2025 Vyomie
-
-EOF
