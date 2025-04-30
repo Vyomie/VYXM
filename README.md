@@ -1,81 +1,57 @@
+# VyxM Protocol
 
-<img src="logo.png" alt="VYXM Logo" style="width:1000px; border-radius:100px;">
+**Multi-agent orchestration system for executing tasks via specialists, tools, and planners.**
 
-**VYXM** is an extensible AI tool designed for intelligent orchestration of tasks such as natural language processing, code generation, and image synthesis. Built around modularity, it allows users to plug in and route between different AI capabilities using a clean, protocol-driven interface.
+## Features
+- Modular specialist registration
+- Planner + distributor separation
+- Tool registry with decorators
+- Easy zero-shot routing
+- Visualization of agent-tool graph
 
-At its core, `vyxm` provides a high-level API to define, register, plan, and execute AI-powered tools — with the `vyxm.protocol` module serving as a lightweight internal protocol for defining tool behaviors.
+## Installation
+```
+pip install vyxm-protocol
+```
 
----
+## Usage Examples
 
-## ✨ Features
+### 1. Run a ProtocolEngine flow:
+```python
+from vyxm.protocol.registry import Registry
+from vyxm.protocol.core import ProtocolEngine
 
-- 🔌 **Tool Registry**: Register and organize multiple AI tools using simple decorators.
-- 🧠 **Intent Planning**: Lightweight, extensible planning engine for routing inputs.
-- 🔀 **Dynamic Distribution**: Route prompts to the appropriate tool with zero glue code.
-- 🧩 **Composable Design**: Easily combine tools like LLMs, image models, custom logic, etc.
-- 🧱 **Protocol Subset**: Direct access to low-level planning, distribution, and registry.
+registry = Registry()
+engine = ProtocolEngine(registry)
 
----
+result = engine.Run("Generate a cat image and email it to me")
+print(result)
+```
 
-## 📦 Installation
+### 2. Register custom specialist:
+```python
+from vyxm.protocol.registry import Registry
 
+class HelloSpecialist:
+    def Run(self, InputData):
+        return ("Hello!", "Text", {"ToolCalls": [], "NextSpecialist": None})
+
+registry = Registry()
+registry.RegisterSpecialist("Greeter", HelloSpecialist(), Tag="LLM")
+```
+
+### 3. Use tools directly:
+```python
+from vyxm.protocol.prebuilt_tools import GoogleMaps
+print(GoogleMaps("coffee shops in SF"))
+```
+
+## Development Setup
+
+Build and test the package:
 ```bash
-pip install vyxm
+pip install -e .[dev]
 ```
 
----
-
-## 🧠 Quick Example: Build a Multi-Modal AI Agent
-
-We'll register a **code generation** and an **image generation** tool, then let vyxm automatically choose which one to run based on the input.
-
-### 1. Register Tools
-
-```python
-from vyxm.protocol import registry, distributor
-
-@registry.register("code_gen")
-def code_gen(data):
-    prompt = data["prompt"]
-    return f"# Python Code\\ndef hello():\\n    print('Prompt was: {prompt}')"
-
-@registry.register("image_gen")
-def image_gen(data):
-    description = data["description"]
-    return f"[Image: '{description}']"
-```
-
-### 2. Call via Distributor
-
-```python
-print(distributor.run("Generate Python code that reverses a string"))
-print(distributor.run("Create an image of a serene beach at sunset with floating lanterns"))
-```
-
-## 📂 Protocol Module Overview
-
-`vyxm.protocol` provides the foundational components that power `vyxm`:
-
-- **registry**: Tool registration system
-- **planner**: Intent classification (can be extended with LLM-based planning)
-- **distributor**: Dispatches prompts to tools based on plan
-
-You can use `vyxm.protocol` directly for advanced workflows or contribute your own planning logic.
-
----
-
-## 🛠️ Extending vyxm
-
-You can extend `vyxm` by adding tools like:
-
-- Language model wrappers (e.g., OpenAI, Claude, local LLMs)
-- Text-to-image models (e.g., Stability, DALL·E)
-- Custom domain-specific functions (e.g., search, summarization)
-
-Just register your tool and let the system handle the routing.
-
----
-
-## 📚 License
-
-MIT © 2025 Vyomie
+## License
+MIT License
