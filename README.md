@@ -1,5 +1,5 @@
-# VyxM Protocol
 
+!['logo']('logo-full.png')
 **Multi-agent orchestration system for executing tasks via specialists, tools, and planners.**
 
 ## Features
