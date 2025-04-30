@@ -13,7 +13,7 @@
 
 ## Installation
 ```
-pip install vyxm-protocol
+pip install vyxm
 ```
 
 ## Usage Examples
