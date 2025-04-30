@@ -1,5 +1,7 @@
 
-!['logo']('logo-full.png')
+![logo](logo.png)
+
+
 **Multi-agent orchestration system for executing tasks via specialists, tools, and planners.**
 
 ## Features
